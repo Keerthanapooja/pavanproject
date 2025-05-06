@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rockpaperscissor</title>
+    <style>
+        .project{
+            /* border: 1px solid black; */
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: darkcyan;
+            
+        }
+        .h1{
+        /* border: 1px solid black; */
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        width: fit-content;
+        padding: 20px;
+        text-transform: capitalize;
+        color: darkturquoise;
+        /* box-shadow: 10px 10px 10px gray; */
+        font-family: monospace;
+        /* background-color: darkslategray; */
+        /* border-radius: 20px; */
+        font-weight: bold;
+     }
+     .h2{
+        /* border: 1px solid black; */
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 100px;
+        width: fit-content;
+        padding: 30px;
+        text-transform: capitalize;
+        font-weight: bold;
+        text-shadow: 10px 10px 10px yellow;
+        color: brown;
+     }
+     .card{
+        /* border: 1px solid black; */
+        list-style: none;
+        display: flex;
+        justify-content: space-evenly;
+        height: 50px;
+        padding: 30px;
+        align-items: center;
+        gap: 400px;
+        text-transform: capitalize;
+        font-size: 25px;
+        color: maroon;
+     }
+     .card1{
+        /* border: 1px solid black; */
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        text-transform: capitalize;
+        color: crimson;
+        font-size: 30px;
+        align-items: center;
+        width: 500px;
+        padding: 20px;
+    
+     }
+     button{
+          display: flex;
+          padding: 10px;
+          width: 100px;
+          align-items: center;
+          justify-content: center;
+          border-radius: 20px;
+          text-transform: capitalize;
+          color: white;
+          box-shadow: 10px 10px 20px wheat;
+          background-color: black;
+          
+     }
+        
+    </style>
+</head>
+<body>
+   <div class="project">
+    <div class="h2">rock paper scissor</div>
+    <div class="card">
+        <button id="rock">rock</button>
+        <button id="paper">paper</button>
+        <button id="scissor">scissor</button>
+    </div>
+        <div id="result"></div>
+   </div> 
+   <script>
+    let project=document.getElementsByClassName("project")[0]
+    let rock=document.getElementById("rock")
+    let paper=document.getElementById("paper")
+    let scissor=document.getElementById("scissor")
+    let result=document.getElementById("result")
+
+    function computerChoice() {
+            let choices = ['Rock', 'Paper', 'Scissors'];
+            return choices[Math.floor(Math.random() * 3)];
+        }
+        function playGame(userChoice) {
+            let computerChoiceResult = computerChoice();
+            let result = '';
+            if (userChoice === computerChoiceResult) {
+                result = "It's a draw!";
+            } else if (
+                (userChoice === 'Rock' && computerChoiceResult === 'Scissors') ||
+                (userChoice === 'rock' && computerChoiceResult === 'Rock') ||
+                (userChoice === 'Scissors' && computerChoiceResult === 'rock')
+            ) {
+                result = `You win! ${userChoice} beats ${computerChoiceResult}.`;
+            } else {
+                result = `You lose! ${computerChoiceResult} beats ${userChoice}.`;
+            }
+
+            
+            result.textContent = `Computer chose ${computerChoiceResult}. ${result}`;
+        }
+        rock.addEventListener('click', () => playGame('Rock'));
+        paper.addEventListener('click', () => playGame('Paper'));
+        scissor.addEventListener('click', () => playGame('Scissors'));
+    
+
+   </script>
+</body>
+</html>
